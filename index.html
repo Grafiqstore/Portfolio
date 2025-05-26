@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Mahammad Rafi</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #2b2d42;
+      color: #edf2f4;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      border-bottom: 1px solid #8d99ae;
+      background: #1c1e29;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #8d99ae;
+      margin-right: 1.5rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #ef233c;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background-color: #1c1e29;
+      padding: 1rem 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #8d99ae;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ef233c;
+      color: #edf2f4;
+    }
+
+    section {
+      padding: 2rem;
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      color: #ef233c;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #8d99ae;
+      display: inline-block;
+    }
+
+    section .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    section .grid img, 
+    section .grid video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #fff;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    section .grid img:hover, 
+    section .grid video:hover {
+      transform: scale(1.05);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      flex-direction: column;
+    }
+
+    .popup img, 
+    .popup video {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: #edf2f4;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .popup .close:hover {
+      color: #ef233c;
+      background: rgba(255, 0, 0, 0.7);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #8d99ae;
+      border-radius: 5px;
+      background: #1c1e29;
+      color: #edf2f4;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #ef233c;
+      color: #edf2f4;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #d90429;
+    }
+
+    #message-sent {
+      display: none;
+      color: #2dce89;
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #1c1e29;
+      color: #8d99ae;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ef233c;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="F:\Portfolio\Rafi.JPG" alt="Profile Picture">
+    <h1>Mahammad Rafi</h1>
+  </header>
+
+  <nav>
+    <a href="#flyers">Flyers</a>
+    <a href="#thumbnails">Thumbnails</a>
+    <a href="#digital-posts">Digital Posts</a>
+    <a href="#motion-graphics">Motion Graphics</a>
+    <a href="#video-edits">Video Edits</a>
+    <a href="#hire-me">Hire Me</a>
+  </nav>
+
+  <!-- Flyers Section -->
+  <section id="flyers">
+    <h2>Flyers</h2>
+    <div class="grid">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Flyer 1" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\b.jpg" alt="Flyer 2" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\c.jpg" alt="Flyer 3" onclick="showPopup('image', this.src)">
+    </div>
+  </section>
+
+  <!-- Thumbnails Section -->
+  <section id="thumbnails">
+    <h2>Thumbnails</h2>
+    <div class="grid">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Thumbnail 1" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\b.jpg" alt="Thumbnail 2" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\c.jpg" alt="Thumbnail 3" onclick="showPopup('image', this.src)">
+    </div>
+  </section>
+
+  <!-- Digital Posts Section -->
+  <section id="digital-posts">
+    <h2>Digital Posts</h2>
+    <div class="grid">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Post 1" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Post 2" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Post 3" onclick="showPopup('image', this.src)">
+    </div>
+  </section>
+
+  <!-- Motion Graphics Section -->
+  <section id="motion-graphics">
+    <h2>Motion Graphics</h2>
+    <div class="grid">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Motion 1" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Motion 2" onclick="showPopup('image', this.src)">
+      <img src="F:\Portfolio\flyers\a.jpg" alt="Motion 3" onclick="showPopup('image', this.src)">
+    </div>
+  </section>
+
+  <!-- Video Edits Section -->
+  <section id="video-edits">
+    <h2>Video Edits</h2>
+    <div class="grid">
+      <video poster="https://via.placeholder.com/300x200.png?text=Video+1" controls onclick="showPopup('video', 'sample-video1.mp4')"></video>
+      <video poster="https://via.placeholder.com/300x200.png?text=Video+2" controls onclick="showPopup('video', 'sample-video2.mp4')"></video>
+      <video poster="https://via.placeholder.com/300x200.png?text=Video+3" controls onclick="showPopup('video', 'sample-video3.mp4')"></video>
+    </div>
+  </section>
+
+  <!-- Hire Me Section -->
+  <section id="hire-me">
+    <h2>Hire Me</h2>
+    <form action="https://formsubmit.co/mahammadrafi643@gmail.com" method="POST" onsubmit="showAcknowledgment(event)">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="message-sent">Message Sent!</div>
+  </section>
+
+  <!-- Lightbox Popup -->
+  <div id="popup" class="popup">
+    <span class="close" onclick="closePopup()">×</span>
+    <img id="popup-image" src="" alt="">
+    <video id="popup-video" controls></video>
+  </div>
+
+  <footer>
+    © 2025 Mahammad Rafi | Designed with 💖 | <a href="mailto:mahammadrafi643@gmail.com">Contact Me</a>
+  </footer>
+
+  <script>
+    // Function to handle popup display
+    function showPopup(type, src) {
+      const popup = document.getElementById("popup");
+      const popupImage = document.getElementById("popup-image");
+      const popupVideo = document.getElementById("popup-video");
+
+      popupImage.style.display = "none";
+      popupVideo.style.display = "none";
+
+      if (type === "image") {
+        popupImage.src = src;
+        popupImage.style.display = "block";
+      } else if (type === "video") {
+        popupVideo.src = src;
+        popupVideo.style.display = "block";
+      }
+
+      popup.style.display = "flex";
+    }
+
+    // Function to close popup
+    function closePopup() {
+      const popup = document.getElementById("popup");
+      const popupImage = document.getElementById("popup-image");
+      const popupVideo = document.getElementById("popup-video");
+
+      popupImage.src = "";
+      popupVideo.src = "";
+      popup.style.display = "none";
+    }
+
+    // Function to display acknowledgment message
+    function showAcknowledgment(event) {
+      event.preventDefault();
+      const messageSent = document.getElementById("message-sent");
+      messageSent.style.display = "block";
+
+      setTimeout(() => {
+        event.target.submit();
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
